@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Surat untuk Nafila</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg">
+
+<h1 style="text-align:center">📬 Surat untuk Nafila</h1>
+<div id="kotak"></div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("suratNafila")) || [];
+const kotak = document.getElementById("kotak");
+
+data.forEach(s => {
+  kotak.innerHTML += `
+    <div class="envelope"></div>
+    <div class="letter">
+      <h3>Dari ${s.nama}</h3>
+      <p><b>Kenangan:</b><br>${s.kenangan}</p>
+      <p><b>Pesan:</b><br>${s.pesan}</p>
+      <p><b>Harapan:</b><br>${s.harapan}</p>
+    </div>
+  `;
+});
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("envelope")) {
+    e.target.classList.toggle("open");
+  }
+});
+</script>
+
+</body>
+</html>
